@@ -30,9 +30,9 @@ select
 	, ul.recent_address
 	, CASE 
 		WHEN uv.order_count > 1 
-			THEN 'returning'
-		ELSE 'new'
-		END as new_vs_returning
+			THEN 1
+		ELSE 0
+		END as return_customer
 	, uv.order_count 
 	, uv.ltv 
 

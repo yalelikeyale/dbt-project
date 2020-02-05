@@ -1,0 +1,51 @@
+version: 2
+models:
+- name: orders_table
+  description: '' 
+  columns:
+  - name: order_id
+    description:
+    tests: 
+      - unique
+  - name: user_id
+    description: 
+  - name: order_status
+    description: 
+  - name: order_status_category
+    description: 
+  - name: order_currency
+    description: 
+  - name: first_order
+    description: 
+  - name: order_sequence
+    description: 
+  - name: payment_device_type
+    description: 
+  - name: country_type
+    description: 
+  - name: gross_amount_dollars
+    description: 
+  - name: gross_tax_amount_dollars
+    description: 
+  - name: gross_shipping_amount_dollars
+    description: 
+  - name: gross_total_amount_dollars
+    description: 
+  - name: order_amount_total_dollars
+    description: 
+- name: users_table
+  - name: user_id
+    description:
+    tests: 
+      - unique
+  - name: recent_address
+    description:
+  - name: return_customer
+    description:
+  - name: order_count
+    description: 
+  - name: ltv
+    description: 
+
+
+  
