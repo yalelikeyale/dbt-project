@@ -40,6 +40,9 @@ select
 	, pt.gross_shipping_amount_dollars
 	, pt.gross_total_amount_dollars
 	, o.order_amount_total_dollars
+	, o.order_created_at
+	, o.order_updated_at
+	, o.order_shipped_at
 
 from {{ref('orders')}} o
 left join {{ref('addresses')}} a 
