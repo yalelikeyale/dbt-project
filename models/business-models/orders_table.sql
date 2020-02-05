@@ -18,10 +18,10 @@ with
 			(
 				select
 					  p.order_id
-					, sum(CASE WHEN status = 'completed' THEN p.payment_tax_amount_dollars ELSE 0 END) as gross_tax_amount_dollars
-					, sum(CASE WHEN status = 'completed' THEN p.payment_amount_dollars ELSE 0 END) as gross_amount_dollars
-					, sum(CASE WHEN status = 'completed' THEN p.payment_amount_shipping_dollars ELSE 0 END) as gross_shipping_amount_dollars
-					, sum(CASE WHEN status = 'completed' THEN p.payment_tax_amount_dollars + p.payment_amount_dollars + p.payment_amount_shipping_dollars ELSE 0 END) as gross_total_amount_dollars
+					, sum(CASE WHEN p.payment_status = 'completed' THEN p.payment_tax_amount_dollars ELSE 0 END) as gross_tax_amount_dollars
+					, sum(CASE WHEN p.payment_status = 'completed' THEN p.payment_amount_dollars ELSE 0 END) as gross_amount_dollars
+					, sum(CASE WHEN p.payment_status = 'completed' THEN p.payment_amount_shipping_dollars ELSE 0 END) as gross_shipping_amount_dollars
+					, sum(CASE WHEN p.payment_status = 'completed' THEN p.payment_tax_amount_dollars + p.payment_amount_dollars + p.payment_amount_shipping_dollars ELSE 0 END) as gross_total_amount_dollars
 				FROM {{ref('payments')}} p 
 				GROUP BY 1
 			)

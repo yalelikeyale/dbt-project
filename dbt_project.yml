@@ -50,17 +50,13 @@ models:
             products:
                 enabled: true
                 materialized: ephemeral
-        business-logic:
+        business-models:
             users_table:
                 enabled: true 
                 materialized: incremental
             orders_table: 
                 enabled: true 
                 materialized: incremental
-        reporting:
-            refactored:
-                enabled: true 
-                materialized: table 
 
 
 

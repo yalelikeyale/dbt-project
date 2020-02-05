@@ -1,51 +1,53 @@
 version: 2
 models:
 - name: orders_table
-  description: '' 
+  description: order information rolled up to the order_id level from orders, payments, addresses, and devices
   columns:
   - name: order_id
-    description:
+    description: primary key
     tests: 
       - unique
   - name: user_id
-    description: 
+    description: unique id for each user - foreign key
   - name: order_status
-    description: 
+    description: the status of the order - paid, pending, shipped, cancelled, completed
   - name: order_status_category
-    description: 
+    description: order status rollup where paid, shipped, and completed all = completed - completed, pending, cancelled 
   - name: order_currency
-    description: 
+    description: the currency the order was made with - USD, GBP, EUR
   - name: first_order
-    description: 
+    description: Binary 1 or 0 if the order is the first order for a user 
   - name: order_sequence
-    description: 
+    description: For each user, the order in which the orders took place determined by orders.created_at
   - name: payment_device_type
-    description: 
+    description: the device type used to make the purchase - source devices
   - name: country_type
-    description: 
+    description: if country code = US then US else International - source addresses 
   - name: gross_amount_dollars
-    description: 
+    description: payments.amount_cents converted to dollars and summed up where payments.status = completed per order 
   - name: gross_tax_amount_dollars
-    description: 
+    description: payments.tax_amount_cents converted to dollars and summed up where payments.status = completed per order 
   - name: gross_shipping_amount_dollars
-    description: 
+    description: payments.amount_shipping_cents converted to dollars and summed up where payments.status = completed per order 
   - name: gross_total_amount_dollars
-    description: 
+    description: gross_amount_dollars + gross_tax_amount_dollars + gross_shipping_amount_dollars
   - name: order_amount_total_dollars
-    description: 
+    description: orders.amount_total_cents converted to dollars 
 - name: users_table
+  description: user level rollup from the orders table 
+  columns:
   - name: user_id
-    description:
+    description: primary key 
     tests: 
       - unique
   - name: recent_address
-    description:
+    description: the address associated with the user's most recent order 
   - name: return_customer
-    description:
+    description: binary for if they've made more than 1 order 
   - name: order_count
-    description: 
+    description: total order count for each user 
   - name: ltv
-    description: 
+    description: sum of gross_total_amount_dollars from the orders_table 
 
 
   
