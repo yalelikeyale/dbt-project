@@ -8,7 +8,7 @@ with
 					FIRST_VALUE(d.device_type IGNORE nulls) OVER 
 						(
 							PARTITION BY d.order_id
-							ORDER BY d.created_at ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+							ORDER BY d.device_created_tstmp ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
 						) AS payment_device_type
 				FROM {{ref('devices')}} d
 				WHERE d.event_type = 'order'
@@ -45,11 +45,22 @@ select
 	, o.order_shipped_at
 
 from {{ref('orders')}} o
-left join {{ref('addresses')}} a 
+left join {{ref('addresses')}} a
+	on a.order_id = o.order_id
 left join order_device od 
 	on od.order_id = o.order_id 
 left join payment_totals pt 
-	on pt.order_id = o.order_id 
+	on pt.order_id = o.order_id
+
+{% if is_incremental() %}
+    where o.order_id in (
+        select distinct o.order_id
+        from {{ref('orders')}} o
+        where o.order_updated_at > (
+          select max(t.order_updated_at)
+          from {{ this }} t)
+        )
+{% endif %}
 
 
 

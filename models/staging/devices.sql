@@ -20,9 +20,9 @@ with
 					  d.order_id
 					, d.device 
 					, d.type 
-					, {{build_timestamp(d.created_date)}} as created_stmp
+					, {{build_timestamp('d.created_date')}} as created_stmp
 					, d.created_seconds
-					, {{build_timestamp(d.updated_date)}} as updated_stmp
+					, {{build_timestamp('d.updated_date')}} as updated_stmp
 					, d.updated_seconds
 				from device_1 d 
 			)
@@ -45,3 +45,4 @@ select
 	, TIMESTAMP_ADD(d.updated_stmp, INTERVAL d.updated_seconds SECOND) as device_updated_tstmp
 
 from device_2 d 
+

@@ -34,20 +34,14 @@ models:
         staging:
             addresses:
                 enabled: true
-                materialized: ephemeral 
-            devices:
-                enabled: true
                 materialized: ephemeral
-            order_items:
+            devices:
                 enabled: true
                 materialized: ephemeral
             orders:
                 enabled: true
                 materialized: ephemeral
             payments:
-                enabled: true
-                materialized: ephemeral
-            products:
                 enabled: true
                 materialized: ephemeral
         business-models:

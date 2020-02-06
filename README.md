@@ -1,15 +1,16 @@
-Welcome to your new dbt project!
+# **FakeCommerce Assessment**
 
-### Using the starter project
+### **Questions**:
 
-Try running the following commands:
-- dbt run
-- dbt test
+1. Looking at revenue by month, would you say that there is seasonality for this business?
+	- With data being limited to the timeframe of January of 2019 to April of 2019, there isn't sufficient data to draw conclusions around monthly seasonality. However, daily revenue indicates that Sundays and Mondays tend to be slower than the rest of the week. 
 
+2. What percentage of revenue is attributed to first time orders?
+	- roughly 85% with a similar percentage of orders being first time orders
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/overview)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+3. What aspects of the data would you want to discuss with a client?
+	- In terms of the data itself, I'd like to better understand the payments as it relates to orders. Revenue 
+	  reported on the orders table doesn't seem to lineup with the revenue numbers coming from the payments table. 
+
+	- In terms of what analysis I'd recommend doing with this data, I typically like to run orders tables through lifetimes to product a recency + frequency matrix to get a sense of customer purchasing cycles and retention. 
+

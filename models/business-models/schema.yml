@@ -48,6 +48,10 @@ models:
     description: total order count for each user 
   - name: ltv
     description: sum of gross_total_amount_dollars from the orders_table 
+  - name: user_created_at
+    description: the timestamp of the users first order from the orders table
+  - name: user_updated_at
+    description: the timestamp of the users last updated order from the orders table 
 
 
   
