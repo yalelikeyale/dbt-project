@@ -12,5 +12,5 @@
 	- In terms of the data itself, I'd like to better understand the payments as it relates to orders. Revenue 
 	  reported on the orders table doesn't seem to lineup with the revenue numbers coming from the payments table. 
 
-	- In terms of what analysis I'd recommend doing with this data, I typically like to run orders tables through lifetimes to product a recency + frequency matrix to get a sense of customer purchasing cycles and retention. 
+	- In terms of what analysis I'd recommend doing with this data, I typically like to run orders tables through lifetimes to produce a recency + frequency matrix to get a sense of customer purchasing cycles and retention. 
 
